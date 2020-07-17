@@ -38,8 +38,6 @@ class Home extends Component {
         Axios.post('https://ec3ll8cxti.execute-api.ap-southeast-2.amazonaws.com/prod/register', data, { headers: { 'Content-Type': 'application/json' } })
             .then((response) => {
                 this.setState({ username: '', password: '', email_id: '' });
-                //if this line comment, error not occurs
-                this.setState({ data: response.data })
                 this.fetchData();
             })
             .catch((error) => {

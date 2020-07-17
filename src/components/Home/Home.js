@@ -14,9 +14,8 @@ class Home extends Component {
     }
 
     fetchData = () => {
-        Axios.get('https://ec3ll8cxti.execute-api.ap-southeast-2.amazonaws.com/prod/register').
-            then((response) => {
-                console.log('res', response.data)
+        Axios.get('https://ec3ll8cxti.execute-api.ap-southeast-2.amazonaws.com/prod/register')
+            .then((response) => {
                 this.setState({ data: response.data })
             })
             .catch((error) => {
@@ -29,7 +28,7 @@ class Home extends Component {
     }
 
     addHandler = () => {
-        console.log(this.state.username)
+
         let data = {
             username: this.state.username,
             password: this.state.password,
@@ -38,7 +37,6 @@ class Home extends Component {
 
         Axios.post('https://ec3ll8cxti.execute-api.ap-southeast-2.amazonaws.com/prod/register', data, { headers: { 'Content-Type': 'application/json' } })
             .then((response) => {
-                // console.log("Data added", response.data);
                 this.setState({ username: '', password: '', email_id: '' });
                 this.fetchData();
             })
@@ -65,7 +63,7 @@ class Home extends Component {
                     <h1>Array Data show</h1>
                     {this.state.data ? this.state.data.registerList.map((val) => {
                         return (
-                            <div>
+                            <div key={val.id}>
                                 <label>Username: </label><label>{val.username} </label><br />
                                 <label>Password: </label><label>{val.password} </label><br />
                                 <label>Email Id: </label><label>{val.email_id} </label><br /><br />

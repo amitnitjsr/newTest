@@ -38,6 +38,8 @@ class Home extends Component {
         Axios.post('https://ec3ll8cxti.execute-api.ap-southeast-2.amazonaws.com/prod/register', data, { headers: { 'Content-Type': 'application/json' } })
             .then((response) => {
                 this.setState({ username: '', password: '', email_id: '' });
+                //if this line comment, error not occurs
+                this.setState({ data: response.data })
                 this.fetchData();
             })
             .catch((error) => {
@@ -48,16 +50,17 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <label>User Name</label>
-                <input type='text' value={this.state.username} placeholder="username"
-                    onChange={(event) => this.inputHandler(event.target.value, 'username')} /><br />
-                <label>Password</label>
-                <input type='password' value={this.state.password} placeholder="password"
-                    onChange={(event) => this.inputHandler(event.target.value, 'password')} /><br />
-                <label>Email ID</label>
-                <input type='email' value={this.state.email_id} placeholder="email id"
-                    onChange={(event) => this.inputHandler(event.target.value, 'email_id')} /><br />
-                <button type='submit' onClick={() => this.addHandler()}>Add</button>
+                <p>
+                    <label>User Name</label>
+                    <input type='text' value={this.state.username} placeholder="username"
+                        onChange={(event) => this.inputHandler(event.target.value, 'username')} /></p>
+                <p> <label>Password</label>
+                    <input type='password' value={this.state.password} placeholder="password"
+                        onChange={(event) => this.inputHandler(event.target.value, 'password')} /></p>
+                <p> <label>Email ID</label>
+                    <input type='email' value={this.state.email_id} placeholder="email id"
+                        onChange={(event) => this.inputHandler(event.target.value, 'email_id')} /></p>
+                <p><button type='submit' onClick={() => this.addHandler()}>Add</button></p>
 
                 <div>
                     <h1>Array Data show</h1>

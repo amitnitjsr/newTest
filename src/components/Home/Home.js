@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Axios from 'axios';
-
+import './Home.css';
 class Home extends Component {
     state = {
         username: '',
@@ -49,14 +49,14 @@ class Home extends Component {
         return (
             <div>
                 <p>
-                    <label>User Name</label>
-                    <input type='text' value={this.state.username} placeholder="username"
+                    <label>User Name</label>&nbsp;&nbsp;
+                    <input className="input-style" type='text' value={this.state.username} placeholder="username"
                         onChange={(event) => this.inputHandler(event.target.value, 'username')} /></p>
-                <p> <label>Password</label>
-                    <input type='password' value={this.state.password} placeholder="password"
+                <p> <label>Password</label>&nbsp;&nbsp;
+                    <input className="input-style" type='password' value={this.state.password} placeholder="password"
                         onChange={(event) => this.inputHandler(event.target.value, 'password')} /></p>
-                <p> <label>Email ID</label>
-                    <input type='email' value={this.state.email_id} placeholder="email id"
+                <p> <label>Email ID</label>&nbsp;&nbsp;
+                    <input className="input-style" type='email' value={this.state.email_id} placeholder="email id"
                         onChange={(event) => this.inputHandler(event.target.value, 'email_id')} /></p>
                 <p><button type='submit' onClick={() => this.addHandler()}>Add</button></p>
 
